@@ -37,9 +37,9 @@ link = request.LAN("lan")
 
 for i in range(4):
   if i == 0:
-    node = request.rawpc("namenode")
+    node = request.RawPC("namenode")
   else:
-    node = request.XenVM("datanode-" + str(i))
+    node = request.RawPC("datanode-" + str(i))
 
   node.routable_control_ip = "true"
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
