@@ -13,16 +13,7 @@ request = pc.makeRequestRSpec()
 
 tourDescription = \
 """
-This profile provides the template for a full research cluster with head node, scheduler, compute nodes, and shared file systems.
-First node (head) should contain: 
-- Shared home directory using Networked File System
-- Management server for SLURM
-Second node (metadata) should contain:
-- Metadata server for SLURM
-Third node (storage):
-- Shared software directory (/software) using Networked File System
-Remaining three nodes (computing):
-- Compute nodes  
+This profile provides the template for a Hadoop cluster with 1 name node and 3 data node.
 """
 
 #
@@ -37,9 +28,9 @@ link = request.LAN("lan")
 
 for i in range(4):
   if i == 0:
-    node = request.RawPC("namenode")
+    node = request.XenVM("namenode")
   else:
-    node = request.RawPC("datanode-" + str(i))
+    node = request.XenVM("datanode-" + str(i))
 
   node.routable_control_ip = "true"
   node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
