@@ -50,10 +50,15 @@ for i in range(4):
   
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
+  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/environment_prep.sh"))
+  node.addService(pg.Execute(shell="sh", command="sudo /local/repository/environment_prep.sh"))
   
-  node.addService(pg.Execute(shell="sh", command="sudo su lngo -c 'cp /local/repository/source/* /users/lngo'"))
+  if i == 0:
+    node.addService(pg.Execute(shell="sh", command="sudo yum install -y ambari-server"))
   
+  node.addService(pg.Execute(shell="sh", command="sudo yum install -y ambari-agent"))
+  node.addService(pg.Execute(shell="sh", command="sudo sed -i 's/localhost/192.168.1.1/g' /etc/ambari-agent/conf/ambari-agent.ini"))
+  node.addService(pg.Execute(shell="sh", command="sudo ambari-agent start"))
+    
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
