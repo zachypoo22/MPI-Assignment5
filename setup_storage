@@ -1,5 +1,9 @@
 ## Add /scratch
 sudo chkconfig --level 35 nfs on
 sudo mkdir scratch
-sudo echo "/scratch compute-1(rw,sync,no_root_squash)" >> /etc/exports
+while [ $i -le 3]
+do
+sudo echo "/scratch compute-$i(rw,sync,no_root_squash)" >> /etc/exports
+((i++))
+done
 sudo service nfs start
