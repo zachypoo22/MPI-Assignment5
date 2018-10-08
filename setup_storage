@@ -1,0 +1,5 @@
+## Add /scratch
+sudo chkconfig --level 35 nfs on
+sudo mkdir scratch
+sudo echo "/scratch compute-1(rw,sync,no_root_squash)" >> /etc/exports
+sudo service nfs start
