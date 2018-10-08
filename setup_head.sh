@@ -2,6 +2,7 @@
 sudo chkconfig --level 35 nfs on
 sudo mkdir software
 i = 1
+sudo chmod 777 /etc/exports
 while [ $i -le 3 ]
 do
 sudo echo "/software compute-$i(rw,sync,no_root_squash)" >> /etc/exports
