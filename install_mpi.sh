@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x
-if [$HOSTNAME == 'head' ]
+if [ $HOSTNAME == 'head' ]
 then
 sudo yum -y group install "Development Tools"
 sudo wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.gz
