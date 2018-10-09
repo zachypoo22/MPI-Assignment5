@@ -57,12 +57,13 @@ for i in range(6):
   
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
-  node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
+  
   
   if i == 0: # head
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_head.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
     
   elif i == 2: # storage
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
