@@ -14,3 +14,6 @@ sudo service nfs start
 sudo echo "export PATH='$PATH:/software/openmpi/3.1.2/bin'" >> /users/zm875176/.bashrc
 sudo echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:/software/openmpi/3.1.2/lib/'" >> /users/zm875176/.bashrc
 source ~/.bashrc
+
+## copy files for part 1
+cp /local/repository/source/* /scratch
