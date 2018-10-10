@@ -22,7 +22,7 @@ Second node (metadata) should contain:
 Third node (storage):
 - Shared software directory (/software) using Networked File System
 Remaining three nodes (computing):
-- Compute nodes
+- Compute nodes.
 """
 
 #
