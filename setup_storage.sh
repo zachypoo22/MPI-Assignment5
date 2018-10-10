@@ -16,4 +16,4 @@ sudo echo "export LD_LIBRARY_PATH='$LD_LIBRARY_PATH:/software/openmpi/3.1.2/lib/
 source ~/.bashrc
 
 ## copy files for part 1
-cp /local/repository/source/* /scratch
+sudo cp /local/repository/source/* /scratch
