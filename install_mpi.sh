@@ -6,7 +6,7 @@ sudo touch /ISITDONE.log
 sudo wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.gz
 sudo tar xzf openmpi-3.1.2.tar.gz
 cd openmpi-3.1.2
-sudo ./configure --prefix=/software/openmpi/3.1.2
+sudo ./configure --prefix=/mnt/software/openmpi/3.1.2
 sudo echo "done configuring" >> /ISITDONE.log
 sudo make
 sudo echo "done making" >> /ISITDONE.log
