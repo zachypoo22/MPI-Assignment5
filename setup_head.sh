@@ -12,5 +12,5 @@ sudo service nfs start
 
 ## Mount /scratch
 sudo service portmap start
-sudo mkdir /mnt/scratch
-sudo mount -t nfs storage:/scratch /mnt/scratch
+sudo mkdir /scratch
+sudo mount -t nfs storage:/scratch /scratch
