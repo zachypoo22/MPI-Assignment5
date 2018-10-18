@@ -1,6 +1,6 @@
 ## Add /software
 sudo chkconfig --level 35 nfs on
-sudo mkdir software
+sudo mkdir /software
 i="1"
 sudo chmod 777 /etc/exports
 while [ $i -le 12 ]
