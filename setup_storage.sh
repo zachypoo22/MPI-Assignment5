@@ -8,6 +8,7 @@ do
 sudo echo "/scratch compute-$i(rw,sync,no_root_squash)" >> /etc/exports
 ((i++))
 done
+sudo chmod 777 /scratch
 sudo service nfs start
 
 ## Modify path
