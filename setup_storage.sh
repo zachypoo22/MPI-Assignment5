@@ -1,6 +1,6 @@
 ## Add /scratch
 sudo chkconfig --level 35 nfs on
-sudo mkdir scratch
+sudo mkdir /scratch
 sudo chmod 777 /etc/exports
 i="1"
 while [ $i -le 12 ]
