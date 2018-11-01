@@ -15,12 +15,9 @@ int main(int argc, char* argv[]) {
   double x_start, y_start;
   double x_rand, y_rand, rand_radius; 
   int rank, size, squareWidth;
-  double start, stop, tpar, tcomm;
   MPI_Status status;
   
   start = MPI_Wtime();
-  
-  nPointsTotal = atoi(argv[1]);
 
   MPI_Init(&argc, &argv);
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -53,7 +50,6 @@ int main(int argc, char* argv[]) {
   if (rank == 0) {
     piEstimate = (double)(pointsReceived * 4) / nPointsTotal;
     printf("%f\n", piEstimate);
-    printf("Time: %lfs\n", tcomm);
   } 
 
   MPI_Finalize();
