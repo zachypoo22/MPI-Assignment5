@@ -15,6 +15,8 @@ int main(int argc, char* argv[]) {
   double x_start, y_start;
   double x_rand, y_rand, rand_radius; 
   int rank, size, squareWidth;
+  double start, stop, tpar, tcomm;
+  double globaldata[12] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
   MPI_Status status;
   
   start = MPI_Wtime();
@@ -43,6 +45,11 @@ int main(int argc, char* argv[]) {
       nPointsInCircle += 1;
     }
   }
+  stop = MPI_Wtime();
+  tcomm += stop - start;
+  
+  printf("Process %d finished in %f seconds\n",rank,tcomm);
+  MPI_Gather(&tcomm, 1, MPI_DOUBLE, globaldata, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
   
   MPI_Reduce(&nPointsInCircle, &pointsReceived, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
   stop = MPI_Wtime();
