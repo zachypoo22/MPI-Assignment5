@@ -58,6 +58,12 @@ for i in range(15):
   node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/passwordless.sh"))
   node.addService(pg.Execute(shell="sh", command="sudo /local/repository/passwordless.sh"))
   
+    # Ben Walker's solution to address latency
+  node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/ssh_setup.sh"))
+  node.addService(pg.Execute(shell="sh", command="sudo -H -u ne903386 bash -c '/local/repository/ssh_setup.sh'"))
+ 
+  node.addService(pg.Execute(shell="sh", command="sudo su ne903386 -c 'cp /local/repository/source/* /users/ne903386'"))
+  
   
   if i == 0: # head
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_head.sh"))
