@@ -11,14 +11,14 @@ int main(int argc, char* argv[]) {
   int nPointsTotal     = 0;
   int nPointsPerRegion = 0;
   int pointsReceived   = 0;
+  
   double piEstimate;
   double x_start, y_start;
   double x_rand, y_rand, rand_radius; 
   int rank, size, squareWidth;
   double start, stop, tpar, tcomm;
-  double globaldata[12] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
-  MPI_Status status;
   
+  MPI_Status status;
   start = MPI_Wtime();
 
   MPI_Init(&argc, &argv);
@@ -45,18 +45,14 @@ int main(int argc, char* argv[]) {
       nPointsInCircle += 1;
     }
   }
-  stop = MPI_Wtime();
-  tcomm += stop - start;
-  
-  printf("Process %d finished in %f seconds\n",rank,tcomm);
-  MPI_Gather(&tcomm, 1, MPI_DOUBLE, globaldata, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
   
   MPI_Reduce(&nPointsInCircle, &pointsReceived, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
   stop = MPI_Wtime();
   tcomm += stop - start;
   if (rank == 0) {
     piEstimate = (double)(pointsReceived * 4) / nPointsTotal;
-    printf("Time: %f\n", piEstimate);
+    printf("PI ESTIMATE: %f\n, piEstimate");
+    printf("TIME: %f\n", tcomm);
   } 
 
   MPI_Finalize();
