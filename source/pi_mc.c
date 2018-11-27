@@ -51,8 +51,8 @@ int main(int argc, char* argv[]) {
   tcomm += stop - start;
   if (rank == 0) {
     piEstimate = (double)(pointsReceived * 4) / nPointsTotal;
-    printf("PI ESTIMATE: %f\n", piEstimate);
-    printf("TIME: %f\n", tcomm);
+    printf("PI ESTIMATE: %f TIME: %f seconds.\n", piEstimate, tcomm);
+    //printf("TIME: %f\n", tcomm);
   } 
 
   MPI_Finalize();
