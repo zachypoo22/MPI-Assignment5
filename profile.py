@@ -66,10 +66,17 @@ for i in range(6):
   
   
   if i == 0: # head
+    
+    #NFS / MPI
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/install_mpi.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/install_mpi.sh"))
+    
+    #SLURM
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurm.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/cource/cgroup.conf /usr/local/etc/"))
+   
     
   elif i == 2: # storage
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
