@@ -64,9 +64,7 @@ for i in range(6):
  
   node.addService(pg.Execute(shell="sh", command="sudo su ab899511 -c 'cp /local/repository/source/* /users/ab899511'"))
   
-  
   if i == 0: # head
-    
     #NFS / MPI
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_head.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_head.sh"))
@@ -75,15 +73,27 @@ for i in range(6):
     
     #SLURM
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurm.conf /usr/local/etc/"))
-    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/cource/cgroup.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/s_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/s_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /usr/local/sbin/slurmctld"))
+    
+  elif i == 1: # meta 
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/s_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/s_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurmdbd.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/cgroup.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo systemctl enable mariadb"))
+    node.addService(pg.Execute(shell="sh", command="sudo systemctl start mariadb"))
+    node.addService(pg.Execute(shell="sh", command="mysql -u root < /local/repository/slurm/sqlSetup.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/etc/slurmdbd"))
     
     
   elif i == 2: # storage
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_storage.sh"))
+    
+    
     
   else: # compute
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_compute.sh"))
