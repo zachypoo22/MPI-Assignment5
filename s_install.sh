@@ -36,7 +36,7 @@ sudo make install
 sudo echo "SLURM: done make all install" >> /ISITDONE.log
 
 #copy slurm.conf PUT SLURM INTO SOURCE FOLDER
-sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/slurm.conf
+sudo cp /local/repository/source/slurm.conf /usr/local/etc/slurm.conf
 
 sudo mkdir /var/spool/slurmctld
 sudo chown slurm: /var/spool/slurmctld
