@@ -12,7 +12,7 @@ module load mpi/gcc_openmpi
 cd /scratch
 mpicc hello.c
 
-for i in {2..48..2}
+for i in {2..12..2}
 do
   echo "With ${i} processes"
   time mpirun --allow-run-as-root -np $i ./a.out
