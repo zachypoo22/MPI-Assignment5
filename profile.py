@@ -78,6 +78,8 @@ for i in range(6):
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/cource/cgroup.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/s_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/s_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/sbin/slurmctld"))
+    
     
   elif i == 2: # storage
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
