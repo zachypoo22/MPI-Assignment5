@@ -29,11 +29,11 @@ cd slurm-18.08.3
 
 #add status log
 sudo ./configure
-sudo echo "done configuring" >> /ISITDONE.log
+sudo echo "SLURM: done configuring" >> /ISITDONE.log
 sudo make
-sudo echo "done making" >> /ISITDONE.log
+sudo echo "SLURM: done making" >> /ISITDONE.log
 sudo make install
-sudo echo "done make all install" >> /ISITDONE.log
+sudo echo "SLURM: done make all install" >> /ISITDONE.log
 
 #copy slurm.conf PUT SLURM INTO SOURCE FOLDER
 sudo cp /local/repository/slurm/slurm.conf /usr/local/etc/slurm.conf
