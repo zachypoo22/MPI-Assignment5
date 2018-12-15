@@ -76,7 +76,8 @@ for i in range(6):
     #SLURM
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurm.conf /usr/local/etc/"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/cource/cgroup.conf /usr/local/etc/"))
-   
+    node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/s_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/s_install.sh"))
     
   elif i == 2: # storage
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
