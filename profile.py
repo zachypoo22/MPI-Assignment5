@@ -79,6 +79,7 @@ for i in range(6):
     node.addService(pg.Execute(shell="sh", command="sudo /usr/local/sbin/slurmctld"))
     
   elif i == 1: # meta 
+    #SLURM
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/s_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/s_install.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurmdbd.conf /usr/local/etc/"))
@@ -90,14 +91,22 @@ for i in range(6):
     
     
   elif i == 2: # storage
+    #NFS / MPI
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_storage.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_storage.sh"))
     
     
     
   else: # compute
+    #NFS / MPI
     node.addService(pg.Execute(shell="sh", command="sudo chmod 755 /local/repository/setup_compute.sh"))
     node.addService(pg.Execute(shell="sh", command="sudo /local/repository/setup_compute.sh"))
-  
+    
+    #SLURM
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/slurm.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo cp /local/repository/source/cgroup.conf /usr/local/etc/"))
+    node.addService(pg.Execute(shell="sh", command="sudo bash /local/repository/slurm_install.sh"))
+    node.addService(pg.Execute(shell="sh", command="sudo /usr/local/etc/slurmd"))
+   
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
