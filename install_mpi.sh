@@ -7,11 +7,11 @@ sudo wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.2.tar.
 sudo tar xzf openmpi-3.1.2.tar.gz
 cd openmpi-3.1.2
 sudo ./configure --prefix=/software/openmpi/3.1.2
-sudo echo "done configuring" >> /ISITDONE.log
+sudo echo "MPI: done configuring" >> /ISITDONE.log
 sudo make
-sudo echo "done making" >> /ISITDONE.log
+sudo echo "MPI: done making" >> /ISITDONE.log
 sudo make all install
-sudo echo "done make all install" >> /ISITDONE.log
+sudo echo "MPI: done make all install" >> /ISITDONE.log
 cd ..
 sudo rm -Rf openmpi-3.1.2
 sudo rm -Rf openmpi-3.1.2.tar.gz
